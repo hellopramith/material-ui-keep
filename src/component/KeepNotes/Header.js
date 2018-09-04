@@ -22,7 +22,7 @@ export default class Header extends Component {
                     <NoteIcon />
                 </IconButton>
                 <Typography variant="title" color="inherit">
-                    My Notes (Keep)
+                    My Notes (Keep)  
                 </Typography>
                 </Toolbar>
             </AppBar>

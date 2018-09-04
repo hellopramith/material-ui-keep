@@ -1,8 +1,11 @@
 import React, {Component, Fragment} from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Header from './Header';
 import AddANote from './AddANote';
 import Notes from './Notes';
+import Projects from './Projects';
+import Menu from './Menu';
 
 const styles = {
     section : {
@@ -40,7 +43,16 @@ export default class KeepNotes extends Component {
     render() {
         return <Fragment>
             <Header />
-            <section style={styles.section}><AddANote onNewNote={this.addNote.bind(this)} /> <Notes notes={this.state.notes} onDelete={this.deleteNote.bind(this)}/></section>
+            <section style={styles.section}>
+            <Menu />
+            <Router>
+            <Switch>
+                <Route exact path='/' render={(props) => <Fragment><AddANote onNewNote={this.addNote.bind(this)} /> <Notes notes={this.state.notes} onDelete={this.deleteNote.bind(this)}/></Fragment>}  />
+                <Route exact path='/projects' render={(props) => <Projects />} />
+            </Switch>
+            </Router>
+            </section>
+            
         </Fragment>
     }
 }
